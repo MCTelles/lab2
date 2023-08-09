@@ -1,0 +1,63 @@
+### SISTEMA BANCÁRIO####
+
+def menu():
+    print("1 - VER SALDO DA CONTA")
+    print("2 - DEPOSITAR DINHEIRO")
+    print("3 - EXTRATO BANCARIO")
+    print("4 - SACAR DINHEIRO")
+    print("5 - SAIR")
+    opc = int(input("Digite sua opção:"))
+    return opc
+
+def iniciarsaldo(saldo):
+    saldoInicial = int(input("DIGITE SEU SALDO INICIAL:"))
+    if saldoInicial < 0:
+        print("tente novemente")
+        iniciarsaldo(saldo)
+    else:
+        saldo += saldoInicial
+    return saldo
+
+def sacar(lista, saldo):
+    quantidade = int(input("Quanto deseja sacar:"))
+    if quantidade > saldo:
+        print("Invalido, tente novamente!")
+        sacar(lista,saldo)
+    else:
+        print("Saque efetuado")
+        saldo -= quantidade
+        lista.append(-quantidade)
+    
+    return lista, saldo
+
+def depositar(lista, saldo):
+    quantidade = int(input("Quando irá depositar:"))
+    saldo += quantidade
+    lista.append(+quantidade)
+    print("Deposito efetuado!")
+    return saldo
+
+def extrato(lista):
+    print(lista)
+
+def versaldo(saldo):
+    print(saldo)
+
+def main():
+    saldo = 0
+    lista = []
+    saldo = iniciarsaldo(saldo)
+    while True:
+        opc = menu()
+        if opc == 1:
+            versaldo(saldo)
+        elif opc == 2:
+            saldo = depositar(lista, saldo)
+        elif opc == 3:
+            extrato(lista)
+        elif opc == 4:
+            saldo = sacar(lista, saldo)
+        elif opc == 5:
+            print("OBRIGADO")
+            break
+main()
