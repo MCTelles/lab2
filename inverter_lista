@@ -1,0 +1,13 @@
+def inverted_list(listaoriginal, inverted):
+    for x in range(len(listaoriginal) -1, -1, -1):
+        inverted.append(listaoriginal[x])
+    return inverted
+
+
+def main():
+    listaoriginal = [1,2,3,4,5]
+    inverted = []
+    inverted_list(listaoriginal, inverted)
+    print(inverted)
+    
+main()
