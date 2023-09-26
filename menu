@@ -1,0 +1,15 @@
+# Função para exibir o menu principal do programa
+def menu():
+    print("---------------------")
+    print("\033[1m----- BEM-VINDO -----\033[0m")
+    print("1) - Adicionar um produto")
+    print("2) - Buscar um produto")
+    print("3) - Visualizar todos os produtos")
+    print("4) - Vender um produto")
+    print("5) - Relatório de vendas")
+    print("6) - Alterar o preço de um produto")
+    print("7) - Deletar um produto")
+    print("8) - Histórico")
+    print("9) - Visualizar Produtos por Categoria")
+    print("10) - Sair")
+    print("---------------------")
