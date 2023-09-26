@@ -1,0 +1,14 @@
+# Função para visualizar o histórico de alterações no estoque
+def view_stock_history_8(stock_history):
+    print("\033[1mHistórico de Alterações no Estoque\033[0m")
+    print("---------------------")
+    for action in stock_history:
+        print("Ação:", action["Ação"])
+        print("Produto:", action["Produto"])
+        print("Quantidade:", action.get("Quantidade", "-"))
+        print("Valor Unitário:", action.get("Valor Unitario", "-"))
+        print("Categoria:", action.get("Categoria", "-"))
+        print("Data:", action.get("Data da Venda", "-"))
+        print("Preço Antigo:", action.get("Preço Antigo", "-"))
+        print("Novo Preço:", action.get("Novo Preço", "-"))
+        print("---------------------")
