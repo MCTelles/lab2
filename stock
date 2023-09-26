@@ -1,0 +1,112 @@
+# Função para adicionar um produto ao estoque
+def add_product_1(stock, stock_history):
+    print("\033[1mAdicionar um produto\033[0m")
+    product_add = input("Digite o nome do produto que deseja adicionar ao estoque: ")
+    amount_product = int(input("Digite a quantidade de produto que deve ser adicionado: "))
+    price_product = float(input("Digite o preço do produto adicionado (preço por unidade): "))
+    category_product = input("Defina a categoria do produto:")
+
+    if product_add in stock:
+        # Se o produto já existe, atualiza a quantidade
+        stock[product_add]['Quantidade'] += amount_product
+    else:
+        # Caso contrário, cria um novo registro para o produto
+        stock[product_add] = {"Quantidade": amount_product, "Valor Unitario": price_product, "Categoria": category_product}
+
+    # Registra a adição no histórico
+    stock_history.append({"Ação": "Adição", "Produto": product_add, "Quantidade": amount_product, "Valor Unitario": price_product, "Categoria": category_product})
+
+# Função para buscar um produto no estoque e exibir seu histórico de vendas
+def search_product_2(stock, sales):
+    print("\033[1mBuscar um produto\033[0m")
+    search_products = input("Digite o nome do produto que deseja verificar: ")
+    print("---------------------")
+    if search_products in stock:
+        # Se o produto existe no estoque, exibe informações do produto
+        print("Produto:", search_products)
+        print("Quantidade:", stock[search_products]['Quantidade'])
+        print("Valor Unitário:", stock[search_products]['Valor Unitario'])
+        print("Categoria:", stock[search_products]['Categoria'])
+
+        # Filtra o histórico de vendas para o produto especificado
+        sales_for_product = list(filter(lambda sale: sale["Produto"] == search_products, sales))
+
+        if sales_for_product:
+            # Se houver vendas, exibe o histórico de vendas para o produto
+            print("\n\033[1mHistórico de Vendas para este Produto\033[0m")
+            print("---------------------")
+            for sale in sales_for_product:
+                print("Data da Venda:", sale["Data da Venda"])
+                print("Quantidade Vendida:", sale["Quantidade Vendida"])
+                print("Valor Total da Venda:", sale["Valor Total da Venda"])
+                print("---------------------")
+        else:
+            # Se não houver vendas, informa que não foram encontradas vendas para o produto
+            print("\nNenhuma venda encontrada para o produto informado.")
+    else:
+        # Se o produto não estiver no estoque, informa que o produto não está disponível
+        print("Este produto não consta no estoque da loja.")
+    print("---------------------")
+# Função para visualizar todos os produtos em estoque
+def view_product_3(stock):
+    print("\033[1mVisualizar todos os produtos em estoque\033[0m")
+    for product, check in stock.items():
+        print("---------------------")
+        print("Produto:", product)
+        print("Quantidade:", check['Quantidade'])
+        print("Valor Unitário:", check['Valor Unitario'])
+        print("Categoria:", check['Categoria'])
+
+# Função para gerar um relatório de vendas
+def sales_report_5(sales):
+    print("\033[1mRelatório de Vendas\033[0m")
+    print("---------------------")
+    for sale in sales:
+        print("Produto:", sale["Produto"])
+        print("Quantidade Vendida:", sale["Quantidade Vendida"])
+        print("Valor Total da Venda:", sale["Valor Total da Venda"])
+
+# Função para alterar o preço de um produto no estoque
+def change_product_price_6(stock, stock_history):
+    print("\033[1mAlterar valor de um produto\033[0m")
+    product_to_change = input("Digite o nome do produto que deseja alterar o valor: ")
+    new_price = float(input("Digite o novo preço do produto: "))
+
+    if product_to_change in stock:
+        old_price = stock[product_to_change]['Valor Unitario']
+        stock[product_to_change]['Valor Unitario'] = new_price
+        stock_history.append({"Ação": "Alteração de Preço", "Produto": product_to_change, "Preço Antigo": old_price, "Novo Preço": new_price})
+        print("\033[32mValor do produto alterado com sucesso!\033[0m")
+    else:
+        print("Este produto não consta no estoque da loja.")
+
+# Função para excluir um produto do estoque
+def delete_product_7(stock, stock_history):
+    print("\033[1mExcluir um produto\033[0m")
+    product_to_delete = input("Digite o nome do produto que deseja excluir: ")
+
+    if product_to_delete in stock:
+        deleted_product = stock[product_to_delete]
+        del stock[product_to_delete]
+        stock_history.append({"Ação": "Exclusão", "Produto": product_to_delete, "Quantidade": deleted_product["Quantidade"], "Valor Unitario": deleted_product["Valor Unitario"], "Categoria": deleted_product["Categoria"]})
+        print("\033[32mProduto excluído com sucesso!\033[0m")
+    else:
+        print("Este produto não consta no estoque da loja.")
+
+# Função para visualizar produtos por categoria
+def view_products_by_category_9(stock):
+    print("\033[1mVisualizar Produtos por Categoria\033[0m")
+    category = input("Digite a categoria que deseja visualizar: ")
+
+    found = False
+    for product, details in stock.items():
+        if details["Categoria"] == category:
+            found = True
+            print("---------------------")
+            print("Produto:", product)
+            print("Quantidade:", details["Quantidade"])
+            print("Valor Unitário:", details["Valor Unitario"])
+            print("Categoria:", details["Categoria"])
+
+    if not found:
+        print("Nenhum produto encontrado para a categoria informada.")
