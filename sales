@@ -1,0 +1,34 @@
+import datetime
+
+# Função para vender um produto
+
+def sell_product_4(stock, sales):
+    print("\033[1mVender um produto\033[0m")
+    sell_product = input("Qual produto deseja vender? ")
+    print("---------------------")
+    if sell_product in stock:
+        print("\033[32mPRODUTO EM ESTOQUE ✓\033[0m")
+        print("---------------------")
+        print("Produto:", sell_product)
+        print("Quantidade:", stock[sell_product]['Quantidade'])
+        print("Valor Unitário:", stock[sell_product]['Valor Unitario'])
+        print("Categoria:", stock[sell_product]['Categoria'])
+
+        sell_quantity = int(input("Quantidade que deseja vender: "))
+
+        if sell_quantity <= stock[sell_product]["Quantidade"]:
+            # Se a quantidade em estoque for suficiente, realiza a venda
+            stock[sell_product]['Quantidade'] -= sell_quantity
+            total_value = sell_quantity * stock[sell_product]['Valor Unitario']
+            sale_date = datetime.datetime.now()  # Captura a data e hora atual
+            sales.append({"Produto": sell_product, "Quantidade Vendida": sell_quantity, "Valor Total da Venda": total_value, "Data da Venda": sale_date})
+            print("---------------------")
+            print("\033[32mVenda realizada com sucesso!\033[0m")
+        else:
+            # Se a quantidade em estoque for insuficiente, informa ao usuário
+            print("---------------------")
+            print("Quantidade insuficiente!")
+    else:
+        # Se o produto não estiver no estoque, informa ao usuário
+        print("---------------------")
+        print("No momento não possuímos esse produto em estoque.")
