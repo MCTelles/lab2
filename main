@@ -1,0 +1,40 @@
+
+import menu
+import sales
+import historic
+import stock
+
+def main():
+    stock_store = {}  # Dicionário para armazenar o estoque de produtos
+    sales_list = []  # Lista para armazenar as vendas realizadas
+    stock_history = []  # Lista para armazenar o histórico de alterações no estoque
+
+    while True:
+        menu.menu() 
+        option = int(input("Escolha uma opção: "))  
+
+        if option == 1:
+            stock.add_product_1(stock_store, stock_history) 
+        elif option == 2:
+            stock.search_product_2(stock_store, sales_list)  
+        elif option == 3:
+            stock.view_product_3(stock_store)  
+        elif option == 4:
+            sales.sell_product_4(stock_store, sales_list)  
+        elif option == 5:
+            stock.sales_report_5(sales_list) 
+        elif option == 6:
+            stock.change_product_price_6(stock_store, stock_history)  
+        elif option == 7:
+            stock.delete_product_7(stock_store, stock_history) 
+        elif option == 8:
+            historic.view_stock_history_8(stock_history)  
+        elif option == 9:
+            stock.view_products_by_category_9(stock_store)  
+        elif option == 10:
+            break  
+        else:
+            print("---------------------")
+            print("Opção inválida. Tente novamente.")
+
+main()
