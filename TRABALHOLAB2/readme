@@ -1,0 +1,19 @@
+Sistema de Estoque em Python
+Este é um programa em Python que permite gerenciar um estoque de produtos. Ele oferece diversas funcionalidades, como adicionar, remover, alterar preços, ver histórico, vender produtos, visualizar todos os itens, criar relatórios de vendas e visualizar por categoria.
+
+Funcionalidades
+Adicionar Produto: Você pode adicionar um novo produto ao estoque, especificando seu nome, categoria, preço e quantidade.
+
+Remover Produto: Remova produtos do estoque com base em seu nome.
+
+Alterar Preço: Atualize o preço de um produto existente no estoque.
+
+Ver Histórico: Veja um histórico de todas as transações relacionadas a um produto específico.
+
+Vender Produto: Registre a venda de produtos e atualize a quantidade disponível no estoque.
+
+Visualizar Todos os Itens: Obtenha uma lista de todos os produtos no estoque.
+
+Relatório de Vendas: Gere um relatório de vendas que inclui informações sobre os produtos vendidos, quantidades e preços.
+
+Visualizar por Categoria: Veja todos os produtos em uma categoria específica.
