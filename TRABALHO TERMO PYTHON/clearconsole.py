@@ -2,6 +2,6 @@ import time
 import os
 
 
-def clearscreen():
-    time.sleep(1)
+def clearscreen(amount):
+    time.sleep(amount)
     os.system("cls")
