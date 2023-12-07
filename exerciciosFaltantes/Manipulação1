@@ -1,0 +1,11 @@
+def calcular_media_numeros(nome_arquivo):
+    try:
+        with open(nome_arquivo, 'r') as arquivo:
+            numeros = arquivo.read().split(',')
+            numeros = [float(numero) for numero in numeros]
+            media = sum(numeros) / len(numeros)
+            return media
+
+    except FileNotFoundError:
+        print("O arquivo não foi encontrado.")
+        return None
