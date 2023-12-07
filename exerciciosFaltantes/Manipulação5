@@ -1,0 +1,14 @@
+def inverter_linhas_arquivo(nome_arquivo):
+    try:
+        with open(nome_arquivo, 'r') as arquivo:
+            linhas = arquivo.readlines()
+            linhas_invertidas = reversed(linhas)  # Inverte a ordem das linhas
+
+            with open('arquivo_invertido.txt', 'w') as arquivo_invertido:
+                for linha in linhas_invertidas:
+                    arquivo_invertido.write(linha.rstrip() + '\n')
+
+        print("Linhas do arquivo foram invertidas e salvas em 'arquivo_invertido.txt'.")
+
+    except FileNotFoundError:
+        print("O arquivo não foi encontrado.")
