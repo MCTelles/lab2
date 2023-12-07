@@ -1,0 +1,26 @@
+def calcular_media(notas):
+    notas = notas.split()
+    notas = [float(nota) for nota in notas]
+    return sum(notas) / len(notas)
+
+def gerar_arquivo_notas(nome_arquivo_alunos, nome_arquivo_notas, nome_arquivo_saida):
+    try:
+        with open(nome_arquivo_alunos, 'r') as arquivo_alunos, open(nome_arquivo_notas, 'r') as arquivo_notas, open(nome_arquivo_saida, 'w') as arquivo_saida:
+            alunos = arquivo_alunos.readlines()
+            notas = arquivo_notas.readlines()
+
+            if len(alunos) != len(notas):
+                print("O número de alunos nos arquivos é diferente.")
+                return
+
+            for i in range(len(alunos)):
+                nome_aluno = alunos[i].strip()
+                notas_aluno = notas[i].strip()
+                media = calcular_media(notas_aluno)
+                linha_saida = f"{nome_aluno}: {media:.2f}\n"
+                arquivo_saida.write(linha_saida)
+
+            print(f"O arquivo '{nome_arquivo_saida}' foi gerado com sucesso.")
+
+    except FileNotFoundError:
+        print("Um ou mais arquivos não foram encontrados.")
