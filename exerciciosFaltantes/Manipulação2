@@ -1,0 +1,14 @@
+def verificar_palavra_arquivo(nome_arquivo, palavra):
+    try:
+        with open(nome_arquivo, 'r') as arquivo:
+            linhas = arquivo.readlines()
+            for num_linha, linha in enumerate(linhas, start=1):
+                if palavra in linha:
+                    print(f"A palavra '{palavra}' foi encontrada na linha {num_linha}:")
+                    print(linha)
+                    return True
+            print(f"A palavra '{palavra}' não foi encontrada no arquivo.")
+
+    except FileNotFoundError:
+        print("O arquivo não foi encontrado.")
+        return False
