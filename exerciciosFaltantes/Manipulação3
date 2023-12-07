@@ -1,0 +1,18 @@
+def criar_copia_arquivo(nome_arquivo):
+    try:
+        with open(nome_arquivo, 'r') as arquivo_original:
+            # Obtendo o nome para a cópia do arquivo
+            partes = nome_arquivo.split('.')
+            nome_copia = f"copia_{partes[0]}_copia.{partes[1]}"
+
+            # Lendo o conteúdo do arquivo original
+            conteudo = arquivo_original.read()
+
+            # Criando a cópia do arquivo
+            with open(nome_copia, 'w') as arquivo_copia:
+                arquivo_copia.write(conteudo)
+
+            print(f"Cópia do arquivo '{nome_arquivo}' criada com o nome '{nome_copia}'.")
+
+    except FileNotFoundError:
+        print("O arquivo não foi encontrado.")
